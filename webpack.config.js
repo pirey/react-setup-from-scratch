@@ -29,6 +29,14 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       hash: true,
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true
+      },
     }),
     new CopyWebPackPlugin([
       {
