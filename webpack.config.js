@@ -1,3 +1,5 @@
+const path = require('path')
+
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebPackPlugin = require('copy-webpack-plugin')
 const DotenvPlugin = require('dotenv-webpack')
@@ -8,15 +10,15 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: 'babel-loader'
       },
       {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'eslint-loader',
-      },
-    ],
+        use: 'eslint-loader'
+      }
+    ]
   },
   plugins: [
     new DotenvPlugin({
@@ -29,25 +31,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       hash: true,
-      minify: {
-        collapseWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        useShortDoctype: true
-      },
+      minify: true
     }),
     new CopyWebPackPlugin([
       {
         from: 'public',
-        force: true,
-        ignore: 'index.html',
-      },
-    ]),
+        ignore: ['public/index.html'],
+        force: true
+      }
+    ])
   ],
   devServer: {
-    contentBase: './dist',
-    stats: 'errors-only',
-  },
+    contentBase: path.resolve(__dirname, 'public'),
+    stats: 'errors-only'
+  }
 }

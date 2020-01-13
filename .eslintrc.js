@@ -3,15 +3,16 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
+    jest: true
   },
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 2018,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react'],
   rules: {
@@ -19,11 +20,11 @@ module.exports = {
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
-    'react/prop-types': 0,
+    'react/prop-types': 0
   },
   settings: {
     react: {
-      version: 'detect',
-    },
-  },
+      version: 'detect'
+    }
+  }
 }
