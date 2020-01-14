@@ -1,11 +1,12 @@
 {
-  "name": "react-app",
+  "name": "react-starter",
   "version": "1.0.0",
   "description": "Starter for building react application",
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "rm -rf dist && webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cp .env.example .env"
   },
   "keywords": [],
   "author": "",
