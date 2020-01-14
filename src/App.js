@@ -11,6 +11,7 @@ function Screen(props) {
         bottom: 0,
         left: 0,
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center'
       }}
@@ -35,10 +36,16 @@ function Title(props) {
   )
 }
 
+function Text(props) {
+  const { children } = props
+  return <div style={{ fontFamily: 'sans-serif' }}>{children}</div>
+}
+
 export default function App() {
   return (
     <Screen>
       <Title>Ready Perfectly!</Title>
+      <Text>{process.env.BASE_API_URL}</Text>
     </Screen>
   )
 }
