@@ -5,19 +5,26 @@ const CopyWebPackPlugin = require('copy-webpack-plugin')
 const DotenvPlugin = require('dotenv-webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
+const CleanTerminalPlugin = require('clean-terminal-webpack-plugin')
 
 module.exports = (env, argv) => {
   const mode = argv.mode ? argv.mode : 'development'
+  const isProduction = mode === 'production'
 
   const config = {
     mode,
+    devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist')
     },
     optimization: {
-      minimize: mode === 'production',
-      minimizer: [new TerserPlugin()]
+      minimize: isProduction,
+      minimizer: [
+        new TerserPlugin({
+          sourceMap: true
+        })
+      ]
     },
     module: {
       rules: [
@@ -46,14 +53,15 @@ module.exports = (env, argv) => {
         template: path.resolve(__dirname, 'public/index.html'),
         filename: 'index.html',
         hash: true,
-        minify: mode === 'production'
+        minify: isProduction
       }),
       new CopyWebPackPlugin([
         {
           from: path.resolve(__dirname, 'public')
         }
       ]),
-      mode !== 'production' && new ErrorOverlayPlugin()
+      !isProduction && new ErrorOverlayPlugin(),
+      new CleanTerminalPlugin()
     ].filter(Boolean),
     stats: 'errors-only',
     devServer: {

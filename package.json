@@ -21,6 +21,7 @@
     "@babel/preset-react": "^7.8.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
+    "clean-terminal-webpack-plugin": "^2.0.5",
     "copy-webpack-plugin": "^5.1.1",
     "dotenv-webpack": "^1.7.0",
     "error-overlay-webpack-plugin": "^0.4.1",
