@@ -17,7 +17,7 @@ module.exports = (env, argv) => {
     },
     optimization: {
       minimize: mode === 'production',
-      minimizer: mode === 'production' ? [new TerserPlugin()] : []
+      minimizer: [new TerserPlugin()]
     },
     module: {
       rules: [
