@@ -28,7 +28,7 @@ function Title(props) {
       style={{
         fontSize: '48px',
         fontFamily: 'sans-serif',
-        textShadow: 'rgba(0, 0, 0, 0.2) 9px 9px 7px'
+        textShadow: 'rgba(100,100, 100, 0.2) 9px 9px 7px'
       }}
     >
       {children}
@@ -45,7 +45,7 @@ export default function App() {
   return (
     <Screen>
       <Title>Ready Perfectly!</Title>
-      <Text>{process.env.BASE_API_URL}</Text>
+      <Text>Build awesome apps</Text>
     </Screen>
   )
 }
