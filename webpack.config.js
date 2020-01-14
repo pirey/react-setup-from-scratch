@@ -53,7 +53,7 @@ module.exports = (env, argv) => {
           from: path.resolve(__dirname, 'public')
         }
       ]),
-      mode === 'production' && new ErrorOverlayPlugin()
+      mode !== 'production' && new ErrorOverlayPlugin()
     ].filter(Boolean),
     stats: 'errors-only',
     devServer: {
